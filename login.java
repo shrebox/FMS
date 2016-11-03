@@ -10,6 +10,9 @@ import java.util.*;
 
 public class login extends JFrame{
 
-	
+	public login()
+	{
+		
+	}
 
 }
