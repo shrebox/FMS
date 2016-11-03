@@ -8,7 +8,7 @@ import javax.swing.JLabel ;
 import javax.swing.* ;
 import java.util.*;
 
-public class login {
+public class login extends JFrame{
 
 	
 
