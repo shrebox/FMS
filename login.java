@@ -16,7 +16,9 @@ public class login extends JFrame{
 
 	public login()
 	{
-		
+		startPanel = new JPanel();
+		startPanel.setLayout(new BoxLayout(startPanel, BoxLayout.Y_AXIS));
+		startPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
 	}
 
 	
