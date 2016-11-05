@@ -15,7 +15,9 @@ public class login extends JFrame{
 
 	public login()
 	{
-
+		JButton login , register , home , logistics , reports ;
+		JLabel label1 = new JLabel(" Facility Management Services System  ");
+		label1.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
 
 	public static void main(String args[])
