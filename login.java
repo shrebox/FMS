@@ -10,14 +10,13 @@ import java.util.*;
 
 public class login extends JFrame{
 
-	JPanel panel1 = new JPanel();
-	JPanel panel2 = new JPanel();
+	JPanel startPanel;
+	JLabel title,name;
+	JButton login, googlelogin, register;
 
 	public login()
 	{
-		JButton login , register , home , logistics , reports ;
-		JLabel label1 = new JLabel(" Facility Management Services System  ");
-		label1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		
 	}
 
 	public static void main(String args[])
