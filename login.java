@@ -12,6 +12,11 @@ public class login extends JFrame{
 
 	public login()
 	{
+
+	}
+
+	public static void main(String args[])
+	{
 		
 	}
 
