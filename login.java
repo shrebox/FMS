@@ -19,9 +19,6 @@ public class login extends JFrame{
 		
 	}
 
-	public static void main(String args[])
-	{
-
-	}
+	
 
 }
