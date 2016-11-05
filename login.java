@@ -10,6 +10,9 @@ import java.util.*;
 
 public class login extends JFrame{
 
+	JPanel panel1 = new JPanel();
+	JPanel panel2 = new JPanel();
+
 	public login()
 	{
 
@@ -17,7 +20,7 @@ public class login extends JFrame{
 
 	public static void main(String args[])
 	{
-		
+
 	}
 
 }
