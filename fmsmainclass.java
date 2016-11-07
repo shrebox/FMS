@@ -3,28 +3,41 @@
 */
 
 import java.util.*;
-public class fmsmainclass {
+
+import javax.swing.JFrame;
+public class fmsmainclass extends JFrame{
 	
-	staff[] staff = new staff[100];
-	supervisor[] supervisor = new supervisor[5]; 
-	admin gm = new admin();
+	//staff[] staff = new staff[100];
+	//supervisor[] supervisor = new supervisor[5]; 
+	//admin gm = new admin();
 	
 	public fmsmainclass()
 	{
 
-		for(int i=0;i<100;i++)
+		/*for(int i=0;i<100;i++)
 		{
 			staff[i]=new staff();
 		}
 		for(int i=0;i<5;i++)
 		{
 			supervisor[i]=new supervisor();
-		}
+		}*/
+		
+		login start = new login();
+		
+		add(start);
 	}
 	
-	public static void main()
+	public static void main(String args[])
 	{
+		fmsmainclass fmc = new fmsmainclass();
 		
+		fmc.pack();
+		fmc.setDefaultLookAndFeelDecorated(true);
+		//ttt.setSize(300,300);
+		fmc.setVisible(true);
+		fmc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		fmc.setTitle("FMS System");
 
 	}
 	
