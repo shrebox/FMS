@@ -26,6 +26,25 @@ public class login extends JFrame{
 		startPanel.add(title);
 		
 		startPanel.add(Box.createRigidArea(new Dimension(0, 80)));
+
+		login = new JButton("Login with username/passord");
+		login.setAlignmentX(Component.CENTER_ALIGNMENT);
+		startPanel.add(login);
+		
+		startPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+
+		
+		googlelogin = new JButton("Login with Gmail");
+		googlelogin.setAlignmentX(Component.CENTER_ALIGNMENT);
+		startPanel.add(googlelogin);
+		
+		startPanel.add(Box.createRigidArea(new Dimension(80, 120)));
+		
+		register = new JButton("Register");
+		register.setAlignmentX(Component.CENTER_ALIGNMENT);
+		startPanel.add(register);
+		
+		startPanel.add(Box.createRigidArea(new Dimension(80, 120)));
 	}
 
 	
