@@ -5,13 +5,6 @@ public class User {
 	private String password;
 	private int uid;
 	
-	public User(String x, String y,int i)
-	{
-		setName(x);
-		setPassword(y);
-		setId(i);
-	}
-	
 	public void setName(String x)
 	{
 		username = x;
