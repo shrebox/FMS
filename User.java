@@ -3,43 +3,46 @@ public class User {
 	
 	private String username;
 	private String password;
-	private String uid;
+	private int uid;
 	
-	public User()
+	public User(String x, String y,int i)
 	{
-		
+		setName(x);
+		setPassword(y);
+		setId(i);
 	}
 	
-	public void nameset()
+	public void setName(String x)
 	{
-		
+		username = x;
 	}
 	
-	public String nameget()
+	public String getName()
 	{
-		return "a";
+		return username;
 	}
 	
-	public void passwordset()
+	public void setPassword(String y)
 	{
-		
+		password = y;
 	}
 	
-	public String passwordget()
+	public String getPassword()
 	{
-		return "a";
+		return password;
 	}
 
-	public void Idset()
+	public void setId(int i)
 	{
-		
+		uid = i;
 	}
 	
-	public String Idget()
+	public int getId()
 	{
-		return "a";
+		return uid;
 	}
 	
 	
 	
 }
+
