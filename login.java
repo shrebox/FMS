@@ -50,6 +50,8 @@ public class login extends JPanel{
 		name.setFont(new Font("Sherif",Font.ITALIC,12));
 		name.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(name);
+
+		add(startPanel);
 	}
 
 	
