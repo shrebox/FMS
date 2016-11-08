@@ -45,6 +45,11 @@ public class login extends JFrame{
 		startPanel.add(register);
 		
 		startPanel.add(Box.createRigidArea(new Dimension(80, 120)));
+
+		name = new JLabel("Shreyash Arya (2015097)\n Tushita Rathore(2015108)");
+		name.setFont(new Font("Sherif",Font.ITALIC,12));
+		name.setAlignmentX(Component.CENTER_ALIGNMENT);
+		startPanel.add(name);
 	}
 
 	
