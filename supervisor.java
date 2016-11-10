@@ -1,9 +1,21 @@
 import java.util.*;
 public class supervisor extends User {
+
+	private String department;
 	
 	public supervisor()
 	{
 		
+	}
+
+	public void setDepartment(String x)
+	{
+		department = x;
+	}
+	
+	public String getDepartment()
+	{
+		return epartment;
 	}
 	
 	public void add()
