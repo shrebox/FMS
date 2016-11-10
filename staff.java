@@ -1,5 +1,7 @@
 import java.util.*;
 public class staff extends User{
+
+	private String department;
 	
 	public staff()
 	{
