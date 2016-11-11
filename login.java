@@ -81,7 +81,7 @@ public static void updateFile(,int size) throws Exception
 			pw.print(a.get(i).username +",");
 			pw.print(a.get(i).password +",");
 			pw.print(a.get(i).uid +",");
-		//	pw.print(a.get(i).size +",");
+			pw.print(a.get(i).department +",");
 		}
 		
 
@@ -126,7 +126,7 @@ public static void readfile()
 				supervisors[i].username = items.get(2); 
 				supervisors[i].password = items.get(3);
 				supervisors[i].uid = Integer.parseInt(items.get(4));	
-				//admin[i].department = items.get(5);
+				supervisors[i].department = items.get(5);
 				line= bfile.readLine();
 				su++;
 			}
@@ -137,7 +137,7 @@ public static void readfile()
 				staffs[i].username = items.get(2); 
 				staffs[i].password = items.get(3);
 				staffs[i].uid = Integer.parseInt(items.get(4));
-				//admin[i].department = items.get(5);
+				staffs[i].department = items.get(5);
 				line= bfile.readLine();
 				st++;
 			}
