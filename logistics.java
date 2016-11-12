@@ -45,6 +45,37 @@ public class logistics {
 		}
 	}
 
+	public void updateInventory(ArrayList<supervisor> spr,int size)
+	{
+
+	FileWriter file = new FileWriter("db4logistic.csv",false);
+   	BufferedWriter bw = new BufferedWriter(file);
+    	PrintWriter pw = new PrintWriter(bw);
+	
+	for(int i=0;i<size;i++)
+	{
+		pw.print(a.get(i).getName +",");
+		pw.print(a.get(i).getDepartment +",");
+		pw.print(num[i]);
+		for(int j=0;j<num[i];j++)
+		{
+			pw.print(a.storeditems.get(j)+",")
+		}
+			
+	}
+		
+
+	pw.print(personarray[i].status);
+		if(i!= size-1)
+		{
+			pw.print("\n");
+		}
+	}
+
+	pw.close();
+
+	}
+
 	
 }
 
