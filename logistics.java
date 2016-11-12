@@ -1,7 +1,8 @@
 import java.util.*;
 public class logistics {
 	
-	private String[] equipAvb = new String[100];
+	List<String> storeditems = new ArrayList<String> (100);
+	ArrayList<supervisor> spr = new ArrayList<supervisor>();
 
 	private String username;
 	private String department;
@@ -29,19 +30,21 @@ public class logistics {
 		{
 			List<String> items = Arrays.asList(line.split("\\s*,\\s*"));
 			
-				spr[l].username = items.get(0); 
-				spr[l].department = items.get(1);
+				spr[l].getName = items.get(0); 
+				spr[l].getDepartment = items.get(1);
 				spr[l].num = Integer.parseInt(items.get(2));
 
-				/*for(int j=0;j<num;j++)
+				for(int j=0;j<num;j++)
 				{
-					spr[l].logistics.add(items.get(3+j));
-				}*/
+					spr[l].storeditems.add(items.get(3+j));
+				}
 
 				
 				line= bfile.readLine();
 				l++;
 		}
+	}
 
+	
 }
 
