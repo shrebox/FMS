@@ -3,10 +3,11 @@ public class logistics {
 	
 	List<String> storeditems = new ArrayList<String> (100);
 	ArrayList<supervisor> spr = new ArrayList<supervisor>();
+	int num[] = new int[100];
 
 	private String username;
 	private String department;
-	private int num;
+	//private int num;
 	
 	public logistics()
 	{
