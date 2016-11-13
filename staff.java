@@ -8,6 +8,16 @@ public class staff extends User{
 		
 	}
 	
+	public void setDepartment(String x)
+	{
+		department = x;
+	}
+	
+	public String getDepartment()
+	{
+		return department;
+	}
+
 	public void sendLogrequests()
 	{
 		
