@@ -1,0 +1,7 @@
+Name,post,username,department,leavestatus,from,till
+Arun,admin,arun123,-,present,-,-
+Ramesh,supervisor,ramesh123,Electricity,present,-,-
+Rahul,supervisor,rahul123,Security,present,-,-
+Ajay,supervisor,ajay123,HVAC,present,-,-
+Anup,supervisor,anup123,Audio/Video,on Leave,20 Nov,30 Nov
+Deepak,supervisor,deepak123,Housekeeping,present,-,-
