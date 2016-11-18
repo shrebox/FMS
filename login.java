@@ -15,9 +15,11 @@ public class login extends JPanel{
 		ArrayList<staff> staffs = new ArrayList<staff>();
 
 
-	JPanel startPanel;
+	JPanel startPanel,loginPanel;
 	JLabel title,name;
 	JButton login, googlelogin, register;
+	private LoginPage LP;
+	private RegPage RP;
 
 	public login()
 	{
@@ -58,8 +60,53 @@ public class login extends JPanel{
 
 		add(startPanel);
 
+		LP = new LoginPage();
+		LP.setLayout(new BoxLayout(LP, BoxLayout.Y_AXIS));
+		LP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
+		
+		RP = new RegPage();
+		RP.setLayout(new BoxLayout(RP, BoxLayout.Y_AXIS));
+		RP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
+		
+		loginUserEvent LUE = new loginUserEvent();  
+		login.addActionListener(LUE);
+		
+		regUserEvent RUE = new regUserEvent();  
+		register.addActionListener(RUE);
+		
+		
+		
+		pack();
+		setDefaultLookAndFeelDecorated(true);
+		//ttt.setSize(300,300);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("FMS System");
+
 		loginevent log = new loginevent();
 		login.addActionListener();
+	}
+
+	public class loginUserEvent implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			setContentPane(LP);
+			revalidate();
+		}
+		
+	}
+	
+	public class regUserEvent implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			setContentPane(RP);
+			revalidate();
+		}
+		
 	}
 
 	private class loginevent implements ActionListener{
