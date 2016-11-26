@@ -8,21 +8,27 @@ import javax.swing.JLabel ;
 import javax.swing.* ;
 import java.util.*;
 
-public class login extends JPanel{
+public class login extends JFrame{
 
-		ArrayList<admin> admin = new ArrayList<admin>();
-		ArrayList<supervisor> supervisors = new ArrayList<supervisor>();
-		ArrayList<staff> staffs = new ArrayList<staff>();
+		//ArrayList<admin> admin = new ArrayList<admin>();
+		//ArrayList<supervisor> supervisors = new ArrayList<supervisor>();
+		//ArrayList<staff> staffs = new ArrayList<staff>();
 
 
-	JPanel startPanel,loginPanel;
-	JLabel title,name;
-	JButton login, googlelogin, register;
+	private JPanel startPanel,loginPanel;
+	private JLabel title,name;
+	private JButton login, googlelogin, register;
 	private LoginPage LP;
-	private RegPage RP;
+	
+	public void goStart(){
+		setContentPane(startPanel);
+		revalidate();
+	}
 
 	public login()
 	{
+		
+		
 		startPanel = new JPanel();
 		startPanel.setLayout(new BoxLayout(startPanel, BoxLayout.Y_AXIS));
 		startPanel.setBorder(new EmptyBorder(new Insets(150, 200, 150, 200)));
@@ -34,7 +40,7 @@ public class login extends JPanel{
 		
 		startPanel.add(Box.createRigidArea(new Dimension(0, 80)));
 
-		login = new JButton("Login with username/passord");
+		login = new JButton("Login with username/password");
 		login.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(login);
 		
@@ -59,14 +65,13 @@ public class login extends JPanel{
 		startPanel.add(name);
 
 		add(startPanel);
-
-		LP = new LoginPage();
+		
+		LP = new LoginPage(this);
 		LP.setLayout(new BoxLayout(LP, BoxLayout.Y_AXIS));
 		LP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
 		
-		RP = new RegPage();
-		RP.setLayout(new BoxLayout(RP, BoxLayout.Y_AXIS));
-		RP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
+		//RP.setLayout(new BoxLayout(RP, BoxLayout.Y_AXIS));
+		//RP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
 		
 		loginUserEvent LUE = new loginUserEvent();  
 		login.addActionListener(LUE);
@@ -82,9 +87,10 @@ public class login extends JPanel{
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("FMS System");
+		
 
-		loginevent log = new loginevent();
-		login.addActionListener();
+		//loginevent log = new loginevent();
+		//login.addActionListener(log);
 	}
 
 	public class loginUserEvent implements ActionListener{
@@ -103,20 +109,18 @@ public class login extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			setContentPane(RP);
-			revalidate();
+			RegPage RP = new RegPage();
 		}
 		
 	}
-
-	private class loginevent implements ActionListener{
+	/*private class loginevent implements ActionListener{
 		public void actionPerformed(ActionEvent event)
 		{
 
 		}
 	}
 
-public static void updateFile(,int size) throws Exception
+/*public static void updateFile(,int size) throws Exception
 {
 	FileWriter file = new FileWriter("input.txt",false);
    	BufferedWriter bw = new BufferedWriter(file);
@@ -190,10 +194,8 @@ public static void readfile()
 			}
 			
 			
-		}
+		}*/
 }
 
 
 
-
-}
