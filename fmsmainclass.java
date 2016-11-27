@@ -11,7 +11,7 @@ public class fmsmainclass{
 	//supervisor[] supervisor = new supervisor[5]; 
 	//admin gm = new admin();
 	
-	public fmsmainclass()
+	public fmsmainclass() throws IOException
 	{
 
 		/*for(int i=0;i<100;i++)
@@ -30,7 +30,7 @@ public class fmsmainclass{
 		
 	}
 	
-	public static void main(String args[])
+	public static void main(String args[]) throws IOException
 	{
 		fmsmainclass fmc = new fmsmainclass();
 		

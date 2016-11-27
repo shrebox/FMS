@@ -21,8 +21,9 @@ public class LoginPage extends JPanel{
 	    
 	    login t;
 	    
-	public LoginPage(login tt)
+	public LoginPage(login tt) throws IOException
 	{
+		data object = new data();
 		t = tt;
 		 JPanel newPanel = new JPanel(new GridBagLayout());
          
@@ -73,19 +74,20 @@ public class LoginPage extends JPanel{
 		   resetEvent RE = new resetEvent();  
 		   resetLogin.addActionListener(RE);
 		   
-		   regEvent regE = new regEvent();  
+		   loginEvent regE = new loginEvent();  
 		   buttonLogin.addActionListener(regE);
 		
 		
 	}
 	
-	public class regEvent implements ActionListener{
+	public class loginEvent implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		
-			t.goStart();
-			revalidate();
+			//t.goStart();
+			//revalidate();
+			checklogs=checkLogin();
 		}
 		
 	}
@@ -113,6 +115,76 @@ public class LoginPage extends JPanel{
 		}
 		
 	}
+
+	public int checkLogin()
+	{
+
+		int a1=0,a2=0,s1=0,s2=0,t1=0,t2=0;
+		String un = textUsername.getText();
+		String pass = String.valueOf(fieldPassword.getPassword());
+		//System.out.println(data.admin.size());
+		for(int i=0;i<data.admin.size();i++)
+		{
+			
+			if(un.equals(data.admin.get(i).getUsername()))
+			{
+				
+				a1=1;
+				if(pass.equals(data.admin.get(i).getPassword()))
+				{
+					a2=1;
+					break;
+				}
+			}
+		}
+
+		for(int i=0;i<data.supervisors.size();i++)
+		{
+			if(un.equals(data.supervisors.get(i).getUsername()))
+			{
+				s1=1;
+				if(pass.equals(data.supervisors.get(i).getPassword()))
+				{
+					s2=1;
+					break;
+				}
+			}
+		}
+
+		for(int i=0;i<data.staffs.size();i++)
+		{
+			if(un.equals(data.staffs.get(i).getUsername()))
+			{
+				t1=1;
+				if(pass.equals(data.staffs.get(i).getPassword()))
+				{
+					t2=1;
+					break;
+				}
+			}
+		}
+
+		if(a1==1 && a2==1)
+		{
+			checklogs=1;
+		}
+		else if(s1==1 && s2==1)
+		{
+			checklogs=2;
+		}
+		else if(t1==1 && t2==1)
+		{
+			checklogs=3;
+		}
+		else
+		{
+			checklogs=9;
+		}
+
+		return checklogs;
+
+	}
+
 }
 
 
