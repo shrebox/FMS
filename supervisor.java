@@ -15,7 +15,7 @@ public class supervisor extends User {
 	
 	public String getDepartment()
 	{
-		return epartment;
+		return department;
 	}
 	
 	public void add()

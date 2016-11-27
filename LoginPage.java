@@ -1,6 +1,7 @@
 import java.awt.FlowLayout ;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
+import java.io.IOException;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
 import javax.swing.JFrame ;
@@ -9,8 +10,8 @@ import javax.swing.* ;
 import java.util.*;
 
 public class LoginPage extends JPanel{
-
-		int checklogs=0;
+	
+		//int checklogs=0;
 	
 	 	private JLabel labelUsername = new JLabel("Enter username: ");
 	    private JLabel labelPassword = new JLabel("Enter password: ");
@@ -25,9 +26,9 @@ public class LoginPage extends JPanel{
 	    
 	public LoginPage(login tt) throws IOException
 	{
-		data object = new data();
-		t = tt;
-		 JPanel newPanel = new JPanel(new GridBagLayout());
+			data object = new data();
+			t = tt;
+			JPanel newPanel = new JPanel(new GridBagLayout());
          
 	        GridBagConstraints constraints = new GridBagConstraints();
 	        constraints.anchor = GridBagConstraints.WEST;
@@ -76,8 +77,8 @@ public class LoginPage extends JPanel{
 		   resetEvent RE = new resetEvent();  
 		   resetLogin.addActionListener(RE);
 		   
-		   loginEvent regE = new loginEvent();  
-		   buttonLogin.addActionListener(regE);
+		   loginEvent logE = new loginEvent();  
+		   buttonLogin.addActionListener(logE);
 		
 		
 	}
@@ -87,9 +88,33 @@ public class LoginPage extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 		
-			//t.goStart();
+			int checklog=checkLogin();
+			
+			if(checklog==1)
+			{
+				GMFr gm = new GMFr();
+				t.dispose();
+			}
+			
+			else if(checklog==2)
+			{
+				SupervisorFr sup = new SupervisorFr();
+				t.dispose();
+			}
+			
+			else if(checklog==3)
+			{
+				StaffFr gm = new StaffFr();
+				t.dispose();
+			}
+			
+			else
+			{
+				JOptionPane.showMessageDialog(t, "Failed");
+			}
+			
+			//t.goadminPanel();
 			//revalidate();
-			checklogs=checkLogin();
 		}
 		
 	}
@@ -117,10 +142,10 @@ public class LoginPage extends JPanel{
 		}
 		
 	}
-
+	
 	public int checkLogin()
 	{
-
+		int checklogs=0;
 		int a1=0,a2=0,s1=0,s2=0,t1=0,t2=0;
 		String un = textUsername.getText();
 		String pass = String.valueOf(fieldPassword.getPassword());
@@ -186,7 +211,6 @@ public class LoginPage extends JPanel{
 		return checklogs;
 
 	}
-
 }
 
 

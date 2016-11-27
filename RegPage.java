@@ -9,7 +9,7 @@ public class RegPage{
 	
 	JFrame regFrame = new JFrame("Register");
 	
-	String type[] = {"--select type--", "Admin", "Supervisor","Staff"};
+	String type[] = {"--select type--", "Supervisor","Staff"};
 	
 	JLabel id = new JLabel("ID:");
 	JLabel typeL = new JLabel("Type");
@@ -41,6 +41,7 @@ public class RegPage{
 		regFrame.setResizable(false);
 		regFrame.setSize(500, 500);
 		regFrame.setLayout(null);
+		
 		
 		regFrame.add(id);
 		id.setBounds(100, 50, 100, 100);
