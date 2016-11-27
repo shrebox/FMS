@@ -5,7 +5,7 @@
 import java.util.*;
 
 import javax.swing.JFrame;
-public class fmsmainclass extends JFrame{
+public class fmsmainclass{
 	
 	//staff[] staff = new staff[100];
 	//supervisor[] supervisor = new supervisor[5]; 
@@ -25,19 +25,21 @@ public class fmsmainclass extends JFrame{
 		
 		login start = new login();
 		
-		add(start);
+		//add(start);
+		
+		
 	}
 	
 	public static void main(String args[])
 	{
 		fmsmainclass fmc = new fmsmainclass();
 		
-		fmc.pack();
+		/*fmc.pack();
 		fmc.setDefaultLookAndFeelDecorated(true);
 		//ttt.setSize(300,300);
 		fmc.setVisible(true);
 		fmc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fmc.setTitle("FMS System");
+		fmc.setTitle("FMS System");*/
 
 	}
 	
