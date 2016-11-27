@@ -7,7 +7,7 @@ public class staff extends User{
 	{
 		
 	}
-
+	
 	public void setDepartment(String x)
 	{
 		department = x;
@@ -17,7 +17,7 @@ public class staff extends User{
 	{
 		return department;
 	}
-	
+
 	public void sendLogrequests()
 	{
 		
@@ -46,4 +46,3 @@ public class staff extends User{
 	}	
 
 }
-

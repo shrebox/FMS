@@ -9,8 +9,6 @@ import javax.swing.* ;
 import java.util.*;
 
 public class LoginPage extends JPanel{
-
-		int checklogs=0;
 	
 	 	private JLabel labelUsername = new JLabel("Enter username: ");
 	    private JLabel labelPassword = new JLabel("Enter password: ");
