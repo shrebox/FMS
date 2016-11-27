@@ -10,6 +10,7 @@ public class RegPage{
 	JFrame regFrame = new JFrame("Register");
 	
 	String type[] = {"--select type--", "Supervisor","Staff"};
+	String departmentA[] = {"--select department--", "Electricity", "Security","HVAC","Audio/Video","Housekeeping"};
 	
 	JLabel id = new JLabel("ID:");
 	JLabel typeL = new JLabel("Type");
@@ -26,7 +27,7 @@ public class RegPage{
 	JTextField usernameTF = new JTextField("",250);
 	JTextField dobTF = new JTextField("",250);
 	JTextField addressTF = new JTextField("",250);
-	JTextField departmentTF = new JTextField("",250);
+	JComboBox departmentS = new JComboBox(departmentA);
 	//nameTF,usernameTF,dobTF,addressTF,derpartmentTF;
 	JPasswordField passwordPF = new JPasswordField(250);
 	
@@ -89,8 +90,8 @@ public class RegPage{
 		regFrame.add(department);
 		department.setBounds(100, 260, 100, 100);
 		
-		regFrame.add(departmentTF);
-		departmentTF.setBounds(200, 300, 200, 20);
+		regFrame.add(departmentS);
+		departmentS.setBounds(200, 300, 200, 20);
 		
 		regFrame.add(registerB);
 		registerB.setBounds(270, 350, 100, 25);
