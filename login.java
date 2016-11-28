@@ -111,7 +111,12 @@ public class login extends JFrame{
 	public class regUserEvent implements ActionListener{
 
 			public void actionPerformed(ActionEvent e) {
-			RegPage RP = new RegPage();
+			try {
+				RegPage RP = new RegPage();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 	}

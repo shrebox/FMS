@@ -1,20 +1,23 @@
+
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
 import javax.swing.* ;
 import java.util.*;
+import java.io.*;
 
 public class RegPage{
 	
 	JFrame regFrame = new JFrame("Register");
 	
-	String type[] = {"--select type--", "Supervisor","Staff"};
-	String departmentA[] = {"--select department--", "Electricity", "Security","HVAC","Audio/Video","Housekeeping"};
+	static String type[] = {"--select type--", "Supervisor","Staff"};
+	static String departmentA[] = {"--select department--", "Electricity", "Security","HVAC","Audio/Video","Housekeeping"};
 	
 	JLabel id = new JLabel("ID:");
 	JLabel typeL = new JLabel("Type");
-	JComboBox typeF = new JComboBox(type);
+	
+	static JComboBox typeF = new JComboBox(type);
 	JLabel name = new JLabel("Name:");
 	JLabel username = new JLabel("Username:");
 	JLabel password = new JLabel("Password:");
@@ -23,21 +26,29 @@ public class RegPage{
 	JLabel department = new JLabel("Department:");
 	JLabel idDescription = new JLabel("ID will be system generated");
 	
-	JTextField nameTF = new JTextField("",250);
-	JTextField usernameTF = new JTextField("",250);
-	JTextField dobTF = new JTextField("",250);
-	JTextField addressTF = new JTextField("",250);
-	JComboBox departmentS = new JComboBox(departmentA);
+	static JTextField nameTF = new JTextField("",250);
+	static JTextField usernameTF = new JTextField("",250);
+	static JTextField dobTF = new JTextField("",250);
+	static JTextField addressTF = new JTextField("",250);
+	static JComboBox departmentS = new JComboBox(departmentA);
 	//nameTF,usernameTF,dobTF,addressTF,derpartmentTF;
-	JPasswordField passwordPF = new JPasswordField(250);
+	static JPasswordField passwordPF = new JPasswordField(250);
 	
 	JButton registerB = new JButton("Register");
 	JButton cancelB = new JButton("Cancel");
 	
-
-	public RegPage()
+	static int size=0;
+	static ArrayList<forRequests> list = new ArrayList<forRequests>();
 	{
+		for(int i=0;i<100;i++)
+		{
+			list.add(new forRequests());
+		}
+	}
 
+	public RegPage() throws IOException
+	{
+		data obj = new data();
 		regFrame.setVisible(true);
 		regFrame.setResizable(false);
 		regFrame.setSize(500, 500);
@@ -117,13 +128,161 @@ public class RegPage{
 
 	}
 	
-	public class regEvent implements ActionListener
+	public class regEvent implements ActionListener 
 	{
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			regFrame.dispose();
+			
+			int registerchk = registerCheck();
+			if(registerchk == 1)
+			{
+				try {
+					updateFile(list,size);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				regFrame.dispose();
+			}
+			else if(registerchk==9)
+			{
+				JOptionPane.showMessageDialog(regFrame, "incomplete details");
+			}
+			else if(registerchk == 5)
+			{
+				JOptionPane.showMessageDialog(regFrame, "Username already exists!! Please choose another");
+			}
+				
+				
+			
 		}
 
 	}
+	
+	public int registerCheck()
+	{
+		int chk=0;
+		int chk1=0,chk2=0,chk3=0;
+		String name = nameTF.getText();
+		String un = usernameTF.getText();
+		String dep = String.valueOf(departmentS.getSelectedItem());
+		String dob = dobTF.getText();
+		String adr = addressTF.getText();
+		String pass = String.valueOf(passwordPF.getPassword());
+		String x = String.valueOf(typeF.getSelectedItem());
+		
+		if(name.equals("")  || un.equals("") || pass.equals("") || dep.equals("") || dob.equals("") || adr.equals("") || x.equals("--select type--") )
+		{
+			chk = 9 ;
+		}
+		else
+		{
+			for(int i=0;i<data.admin.size();i++)
+			{
+				if(un.equals(data.admin.get(i).getUsername()))
+				{
+					chk1 = 2 ;
+					break;
+				}
+				else
+				{
+					chk1 =1;
+				}
+			}
+			for(int i=0;i<data.supervisors.size();i++)
+			{
+				if(un.equals(data.supervisors.get(i).getUsername()))
+				{
+					chk2 = 2 ;
+					break;
+				}
+				else
+				{
+					chk2=1;
+				}
+			}
+			for(int i=0;i<data.staffs.size();i++)
+			{
+				if(un.equals(data.staffs.get(i).getUsername()))
+				{
+					chk3 = 2 ;
+					break;
+				}
+				else 
+				{
+					chk3 = 1;
+				}
+			}
+			
+		}
+		
+		if(chk1 ==2 || chk2==2|| chk3==2)
+		{
+			chk = 5;
+		}
+		else if(chk==9)
+		{
+			chk = 9;
+		}
+		else
+		{
+			chk =1;
+		}
+		
+		
+		return chk;
+	}
+	
+	
+	public static void updateFile(ArrayList<forRequests> list ,int s) throws Exception
+	{
+		
+		FileWriter file = new FileWriter("db1register.csv",false);
+	   	BufferedWriter bw = new BufferedWriter(file);
+	    PrintWriter pw = new PrintWriter(bw);
+	    
+	    String name = nameTF.getText();
+		String un = usernameTF.getText();
+		String dep = String.valueOf(departmentS.getSelectedItem());
+		String dob = dobTF.getText();
+		String adr = addressTF.getText();
+		String pass = String.valueOf(passwordPF.getPassword());
+	    String x = String.valueOf(typeF.getSelectedItem());
+	    
+	    list.get(size).setName(name);
+	    list.get(size).setUsername(un);
+	    list.get(size).setDep(dep);
+	    list.get(size).setPassword(pass);
+	    list.get(size).setAdr(adr);
+	    list.get(size).setPost(x);
+	    list.get(size).setDOB(dob);
+	    
+		//size++;
+		for(int i=0;i<=size;i++)
+		{
+				pw.print( list.get(i).getName() +",");
+				pw.print( list.get(i).getPost() +",");
+				pw.print( list.get(i).getUsername() +",");
+				pw.print( list.get(i).getPassword() +",");
+				pw.print( list.get(i).getDep() +",");
+				pw.print( list.get(i).getDOB() +",");
+				pw.print( list.get(i).getAdr());
+				
+				if(i!= size)
+				{
+					pw.print("\n");
+				}		
+			
+		}	
+		size++;
+		
+		pw.close();
+	}
+
+			
+
 }
+
+
+
