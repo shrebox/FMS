@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.*;
 
@@ -94,6 +95,9 @@ public class reqtable extends JFrame{
 		
 		approveEvent app = new approveEvent();
 		approve.addActionListener(app);
+		
+		dipproveEvent dap = new dipproveEvent();
+		disapprove.addActionListener(dap);
 	}
 	
 	
@@ -129,7 +133,7 @@ public class reqtable extends JFrame{
 		public void actionPerformed(ActionEvent e)
 		{
 			String submit = submitTF.getText();
-			System.out.println(size+"-------");
+			//System.out.println(size+"-------");
 			for(int i=0;i<size;i++)
 			{
 				i1 = obj.numSuperv();
@@ -150,7 +154,7 @@ public class reqtable extends JFrame{
 								obj.supervisors.get(j).setPost(list.get(index).getPost());
 								obj.supervisors.get(j).setUsername(list.get(index).getUsername());
 								obj.supervisors.get(j).setPassword(list.get(index).getPassword());
-								obj.supervisors.get(j).setId(generateID());
+								obj.supervisors.get(j).setId(obj.supervisors.get(j).getId());
 								obj.supervisors.get(j).setDepartment(list.get(index).getDep());
 								obj.supervisors.get(j).setDob(list.get(index).getDOB());
 								obj.supervisors.get(j).setAdr(list.get(index).getAdr());
@@ -195,6 +199,30 @@ public class reqtable extends JFrame{
 					break;
 					
 					
+				}
+			}
+		}
+	}
+	
+	public class dipproveEvent implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String submit = submitTF.getText();
+			for(int i=0;i<size;i++)
+			{
+				if(submit.equals(list.get(i).getUsername()))
+				{
+					index = i;
+					list.remove(index);
+					size--;
+					
+					try {
+						updatefile1(list,size);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		}
@@ -286,13 +314,39 @@ public class reqtable extends JFrame{
 			}	
 			//s1++;
 			s2++;
-			pw.close();
-	    
+			pw.close();  
 }
 	
 	public String generateID()
 	{
-		return "0";
+		int idd=0;
+		
+		//Random rand = new Random();
+		String dpt = list.get(index).getDep();
+		
+		if(dpt.equals("Electricity"))
+		{
+			idd = 1100 + (1 + (int)(Math.random() * 99)); 
+		}
+		else if(dpt.equals("Security"))
+		{
+			idd = 1200 + (1 + (int)(Math.random() * 99));
+		}
+		else if(dpt.equals("HVAC"))
+		{
+			idd = 1300 + (1 + (int)(Math.random() * 99));
+		}
+		else if(dpt.equals("Audio/Video"))
+		{
+			idd = 1400 + (1 + (int)(Math.random() * 99));
+		}
+		else if(dpt.equals("Housekeeping"))
+		{
+			idd = 1500 + (1 + (int)(Math.random() * 99));
+		}
+		
+		
+		return String.valueOf(idd);
 	}
 
 	
