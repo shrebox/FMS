@@ -1,17 +1,19 @@
+package fms;
+
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
-import java.util.List;
-import javax.swing.* ;
 import java.util.*;
+import javax.swing.* ;
+import java.util.List;
 import java.io.*;
 
 public class RegPage{
 	
 	JFrame regFrame = new JFrame("Register");
 	
-	static String type[] = {"--select type--", "Supervisor","Staff"};
+	static String type[] = {"--select type--", "supervisor","staff"};
 	static String departmentA[] = {"--select department--", "Electricity", "Security","HVAC","Audio/Video","Housekeeping"};
 	
 	JLabel id = new JLabel("ID:");
@@ -51,7 +53,7 @@ public class RegPage{
 	{
 
 		data obj = new data();
-
+		
 		try {
 			size = reading(list);
 		} catch (IOException e1) {
@@ -181,7 +183,7 @@ public class RegPage{
 	public int registerCheck()
 	{
 		int chk=0;
-		int chk1=0,chk2=0,chk3=0;
+		int chk1=0,chk2=0,chk3=0,chk4=0;
 		String name = nameTF.getText();
 		String un = usernameTF.getText();
 		String dep = String.valueOf(departmentS.getSelectedItem());
@@ -232,7 +234,6 @@ public class RegPage{
 					chk3 = 1;
 				}
 			}
-
 			for(int i=0;i<list.size();i++)
 			{
 				if(un.equals(list.get(i).getUsername()))
@@ -245,10 +246,9 @@ public class RegPage{
 					chk4 = 1;
 				}
 			}	
-			
 		}
 		
-		if(chk1 ==2 || chk2==2|| chk3==2)
+		if(chk1 ==2 || chk2==2|| chk3==2 || chk4==2)
 		{
 			chk = 5;
 		}
@@ -260,8 +260,6 @@ public class RegPage{
 		{
 			chk =1;
 		}
-		
-		
 		return chk;
 	}
 	
@@ -288,10 +286,8 @@ public class RegPage{
 		}
 			return a;
 	}
-	
 	public static void updateFile(ArrayList<forRequests> list ,int s) throws Exception
 	{
-		
 		FileWriter file = new FileWriter("db1register.csv",false);
 	   	BufferedWriter bw = new BufferedWriter(file);
 	    PrintWriter pw = new PrintWriter(bw);
@@ -311,8 +307,6 @@ public class RegPage{
 	    list.get(size).setAdr(adr);
 	    list.get(size).setPost(x);
 	    list.get(size).setDOB(dob);
-	    
-		//size++;
 		for(int i=0;i<=size;i++)
 		{
 				pw.print( list.get(i).getName() +",");
@@ -322,19 +316,15 @@ public class RegPage{
 				pw.print( list.get(i).getDep() +",");
 				pw.print( list.get(i).getDOB() +",");
 				pw.print( list.get(i).getAdr());
-				
 				if(i!= size)
 				{
 					pw.print("\n");
 				}		
-			
 		}	
 		size++;
-		
 		pw.close();
 	}
-
-			
-
 }
+
+
 

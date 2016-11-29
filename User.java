@@ -1,3 +1,5 @@
+package fms;
+
 import java.util.*;
 public class User {
 	
@@ -5,8 +7,9 @@ public class User {
 	private String post;
 	private String username;
 	private String password;
-	private int uid;
-	
+	private String uid;
+	private String dob;
+	private String adr;
 /*	public User(String x, String y,int i)
 	{
 		setName(x);
@@ -14,7 +17,6 @@ public class User {
 		setId(i);
 	}
 */	
-
 	public void setName(String x)
 	{
 		name = x;
@@ -55,17 +57,32 @@ public class User {
 		return password;
 	}
 
-	public void setId(int i)
+	public void setId(String i)
 	{
 		uid = i;
 	}
 	
-	public int getId()
+	public String getId()
 	{
 		return uid;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getAdr() {
+		return adr;
+	}
+
+	public void setAdr(String adr) {
+		this.adr = adr;
 	}
 	
 	
 	
 }
-

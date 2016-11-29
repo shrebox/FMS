@@ -1,3 +1,5 @@
+package fms;
+
 import java.awt.FlowLayout ;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
@@ -18,6 +20,7 @@ public class data{
 		static ArrayList<String> checker ;
 
 		String check ;
+		int a=0,su=0,st=0,i=0;
 
 	public data() throws IOException
 	{
@@ -48,7 +51,7 @@ public class data{
 		BufferedReader bfile = new BufferedReader(inp);
 
 		String line= bfile.readLine();
-		int a=0,su=0,st=0,i=0;
+		
 		
 		while(line!= null)
 		{
@@ -61,8 +64,10 @@ public class data{
 				admin.get(a).setPost(items.get(1));
 				admin.get(a).setUsername(items.get(2)); 
 				admin.get(a).setPassword(items.get(3));
-				admin.get(a).setId(Integer.parseInt(items.get(4)));
+				admin.get(a).setId((items.get(4)));
 				//admin.get(i).setDepartment(items.get(5));
+				admin.get(a).setDob(items.get(6));
+				admin.get(a).setAdr(items.get(7));
 				line= bfile.readLine();
 				a++;
 			}
@@ -72,8 +77,10 @@ public class data{
 				supervisors.get(su).setPost(items.get(1));
 				supervisors.get(su).setUsername(items.get(2)); 
 				supervisors.get(su).setPassword(items.get(3));
-				supervisors.get(su).setId(Integer.parseInt(items.get(4)));	
+				supervisors.get(su).setId(items.get(4));	
 				supervisors.get(su).setDepartment(items.get(5));
+				supervisors.get(su).setDob(items.get(6));
+				supervisors.get(su).setAdr(items.get(7));
 				line= bfile.readLine();
 				su++;
 			}
@@ -83,12 +90,29 @@ public class data{
 				staffs.get(st).setPost(items.get(1));
 				staffs.get(st).setUsername(items.get(2)); 
 				staffs.get(st).setPassword(items.get(3));
-				staffs.get(st).setId(Integer.parseInt(items.get(4)));
+				staffs.get(st).setId((items.get(4)));
 				staffs.get(st).setDepartment(items.get(5));
+				staffs.get(st).setDob(items.get(6));
+				staffs.get(st).setAdr(items.get(7));
 				line= bfile.readLine();
 				st++;
 			}		
 		}
+	}
+	
+	public int numAdmin()
+	{
+		return a;
+	}
+	
+	public int numStaff()
+	{
+		return st;
+	}
+	
+	public int numSuperv()
+	{
+		return su;
 	}
 
 	
