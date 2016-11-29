@@ -1,5 +1,6 @@
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
+import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
@@ -41,13 +42,19 @@ public class SupervisorFr {
 		Random rand = new Random(); 
 		int stafCount= (rand.nextInt(100/2)*2) + 1;
 		
-		public SupervisorFr()
+		String Dept="";
+		
+		public SupervisorFr(String supdep)
 		{
+			Dept = supdep;
+			
+			System.out.println(Dept);
+			
 			supFrame.setVisible(true);
 			supFrame.setResizable(false);
 			supFrame.setSize(800, 800);
 			supFrame.setLayout(null);
-			supFrame.setLocationRelativeTo(null);
+			//supFrame.setLocationRelativeTo(null);
 			
 			supFrame.add(head);
 			head.setBounds(100, 50, 300, 50);
@@ -71,7 +78,9 @@ public class SupervisorFr {
 			supFrame.add(logoutB);
 			logoutB.setBounds(610, 150, 100, 30);
 			
-			//------------home panel-----------------------------
+			/**------------home panel-----------------------------
+			 * 
+			 */
 			
 			homeP.setLayout(null);
 			supFrame.add(homeP);
@@ -90,14 +99,29 @@ public class SupervisorFr {
 			homeUpdateTaskStatB.setBounds(180, 390, 250, 25);
 			homeP.add(homeUpdateTaskStatB);
 			
-			//----------------home screen buttons actionlistener-----------
+			/**----------------home screen buttons actionlistener-----------
+			 * 
+			 */
 			
-			//----------------staff screen buttons actionlistener----------
+			homeAssgnTEvent at = new homeAssgnTEvent();
+			homeAssignTB.addActionListener(at);
+			
+			/**----------------staff screen buttons actionlistener----------
+			 * 
+			 */
 			
 			staffstaffvdEvent staffvd = new staffstaffvdEvent();
 			staffstaffB.addActionListener(staffvd);
 			
-			//-----------------logistics screen action listeners----------------
+			staffviewEvent sve = new staffviewEvent();
+			staff2viewB.addActionListener(sve);
+			
+			staffdelEvent sde = new staffdelEvent();
+			staff2deleteB.addActionListener(sde);
+			
+			/**-----------------logistics screen action listeners----------------
+			 * 
+			 */
 			
 			logViewEvent lve = new logViewEvent();
 			logViewB.addActionListener(lve);
@@ -105,12 +129,21 @@ public class SupervisorFr {
 			logSendReqEvent lsre = new logSendReqEvent();
 			logSendReqB.addActionListener(lsre);
 			
-			//-----------------reports screen action listeners------------------
+			/**-----------------reports screen action listeners------------------
+			 * 
+			 */
 			
-			//-----------------requests screen action listeners-----------------
+			repViewEvent rve = new repViewEvent();
+			reportsViewB.addActionListener(rve);
+			
+			/**-----------------requests screen action listeners-----------------
+			 * 
+			 */
 			
 			
-			//----------------tab buttons action listeners--------------
+			/**----------------tab buttons action listeners--------------
+			 * 
+			 */
 			
 			homeEvent he = new homeEvent();
 			homeB.addActionListener(he);
@@ -165,6 +198,7 @@ public class SupervisorFr {
 				homeP.repaint();
 				
 				staffstaffB.setBounds(235, 140, 130, 40);
+				staffstaffB.setEnabled(true);
 				homeP.add(staffstaffB);
 				
 				staff2viewB.setBounds(170, 270, 100, 40);
@@ -243,6 +277,15 @@ public class SupervisorFr {
 		
 		//-----------------------------------------------------------------
 		
+		public class homeAssgnTEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				taskgenform form = new taskgenform();
+
+			}
+		}
+		
 		public class staffstaffvdEvent implements ActionListener{
 			
 			public void actionPerformed(ActionEvent e)
@@ -258,11 +301,29 @@ public class SupervisorFr {
 
 		}
 		
+		public class staffviewEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				supStaffviewTable view = new supStaffviewTable(Dept);
+				
+			}
+		}
+		
+		public class staffdelEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				supStaffdelTable view = new supStaffdelTable(Dept);
+				
+			}
+		}
+		
 		public class logViewEvent implements ActionListener{
 			
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				viewSupStaffTable log = new viewSupStaffTable(3);
 			}
 		}
 		
@@ -271,6 +332,17 @@ public class SupervisorFr {
 			public void actionPerformed(ActionEvent e)
 			{
 				
+			}
+		}
+		
+		public class repViewEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e){
+				
+				try{
+					Desktop.getDesktop().open(new File("/home/shrebox/reports"));
+				}
+				catch(Exception ex){}
 			}
 		}
 	}

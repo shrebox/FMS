@@ -1,12 +1,10 @@
-package fms;
-
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
-import java.util.*;
-import javax.swing.* ;
 import java.util.List;
+import javax.swing.* ;
+import java.util.*;
 import java.io.*;
 
 public class RegPage{
@@ -54,12 +52,9 @@ public class RegPage{
 
 		data obj = new data();
 		
-		try {
-			size = reading(list);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		//try {size = reading(list);} 
+		//catch (IOException e1) {e1.printStackTrace();}
+				  				
 		
 		regFrame.setVisible(true);
 		regFrame.setResizable(false);
@@ -234,18 +229,7 @@ public class RegPage{
 					chk3 = 1;
 				}
 			}
-			for(int i=0;i<list.size();i++)
-			{
-				if(un.equals(list.get(i).getUsername()))
-				{
-					chk4 = 2;
-					break;
-				}
-				else 
-				{
-					chk4 = 1;
-				}
-			}	
+			
 		}
 		
 		if(chk1 ==2 || chk2==2|| chk3==2 || chk4==2)
@@ -260,34 +244,15 @@ public class RegPage{
 		{
 			chk =1;
 		}
+		
+		
 		return chk;
 	}
 	
-	public static int reading(ArrayList<forRequests> list) throws IOException
-	{
-		FileReader inp = new FileReader("db1register.csv");
-		BufferedReader bfile = new BufferedReader(inp);
-		String line= bfile.readLine();
-		int a=0;
-		while(line!= null)
-		{
-			List<String> items = Arrays.asList(line.split("\\s*,\\s*"));
-			
-			list.get(a).setName(items.get(0));
-			list.get(a).setPost(items.get(1));
-			list.get(a).setUsername(items.get(2)); 
-			list.get(a).setPassword(items.get(3));
-			list.get(a).setDep(items.get(4));
-			list.get(a).setDOB(items.get(5));
-			list.get(a).setAdr(items.get(6));
-			
-			line= bfile.readLine();
-			a++;
-		}
-			return a;
-	}
+	
 	public static void updateFile(ArrayList<forRequests> list ,int s) throws Exception
 	{
+		
 		FileWriter file = new FileWriter("db1register.csv",false);
 	   	BufferedWriter bw = new BufferedWriter(file);
 	    PrintWriter pw = new PrintWriter(bw);
@@ -307,6 +272,8 @@ public class RegPage{
 	    list.get(size).setAdr(adr);
 	    list.get(size).setPost(x);
 	    list.get(size).setDOB(dob);
+	    
+		//size++;
 		for(int i=0;i<=size;i++)
 		{
 				pw.print( list.get(i).getName() +",");
@@ -316,15 +283,19 @@ public class RegPage{
 				pw.print( list.get(i).getDep() +",");
 				pw.print( list.get(i).getDOB() +",");
 				pw.print( list.get(i).getAdr());
+				
 				if(i!= size)
 				{
 					pw.print("\n");
 				}		
+			
 		}	
 		size++;
+		
 		pw.close();
 	}
+
+			
+
 }
-
-
 

@@ -1,5 +1,3 @@
-package fms;
-
 import java.util.*;
 public class User {
 	

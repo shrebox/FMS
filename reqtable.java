@@ -1,7 +1,6 @@
-package fms;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener ;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,16 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
 import javax.swing.*;
-
-import fms.RegPage.regEvent;
 
 public class reqtable extends JFrame{
 	
 	JTable table;
-	JButton approve,disapprove;
+	JButton approve,disapprove, cancel;
 	JTextField submitTF;
+	JLabel username = new JLabel("Enter Username:");
+	
+	int mainCount=0;
 	
 	Object[][] data = new Object[100][4];
 	
@@ -39,13 +38,15 @@ public class reqtable extends JFrame{
 	
 	public reqtable() 
 	{
+		//mainCount = count;
+		
 		try {
 			obj = new data();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-	
+		
 		try {
 			size = reading(list);
 		} catch (IOException e) {
@@ -79,16 +80,23 @@ public class reqtable extends JFrame{
 		disapprove.setBounds(230, 280, 120, 20);
 		
 		submitTF = new JTextField(250);
-		submitTF.setBounds(380, 280, 120, 20);
+		submitTF.setBounds(400, 310, 120, 20);
 		
+		cancel = new JButton("Cancel");
+		cancel.setBounds(160, 320, 120, 20);
+		
+		username.setBounds(400, 280, 120, 20);
+		//memreqdata mm = new memreqdata(this);
 		
 		//add(table);
 		this.add(approve);
 		this.add(disapprove);
 		this.add(submitTF);
+		this.add(cancel);
+		this.add(username);
 		
 		this.setLayout(null);		
-		this.setSize(630,350);
+		this.setSize(630,400);
 		this.setVisible(true);
 		this.setTitle("Member Registration Requests");
 		//this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -98,9 +106,10 @@ public class reqtable extends JFrame{
 		
 		dipproveEvent dap = new dipproveEvent();
 		disapprove.addActionListener(dap);
+		
+		cancelEvent ce = new cancelEvent();
+		cancel.addActionListener(ce);
 	}
-	
-	
 	
 	public static int reading(ArrayList<forRequests> list) throws IOException
 	{
@@ -201,6 +210,8 @@ public class reqtable extends JFrame{
 					
 				}
 			}
+			
+			dispose();
 		}
 	}
 	
@@ -225,6 +236,8 @@ public class reqtable extends JFrame{
 					}
 				}
 			}
+			
+			dispose();
 		}
 	}
 	
@@ -314,7 +327,8 @@ public class reqtable extends JFrame{
 			}	
 			//s1++;
 			s2++;
-			pw.close();  
+			pw.close();
+	    
 }
 	
 	public String generateID()
@@ -347,6 +361,14 @@ public class reqtable extends JFrame{
 		
 		
 		return String.valueOf(idd);
+	}
+	
+	public class cancelEvent implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e)
+		{
+			dispose();
+		}
 	}
 
 	

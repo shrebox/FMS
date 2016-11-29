@@ -9,7 +9,7 @@ public class taskgenform {
 
 	JFrame taskfr = new JFrame();
 	
-	JLabel head = new JLabel("Registration");
+	JLabel head = new JLabel("Task Assignment Form");
 	
 	JLabel id = new JLabel("ID:");
 	JLabel idDescription = new JLabel("ID will be system generated");
@@ -47,7 +47,7 @@ public class taskgenform {
 		taskfr.setLayout(null);
 		
 		taskfr.add(head);
-		head.setBounds(100, 20, 300, 50);
+		head.setBounds(100, 20, 400, 50);
 		head.setFont(new Font("Arial", Font.BOLD, 28));
 
 		

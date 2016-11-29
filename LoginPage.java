@@ -22,6 +22,8 @@ public class LoginPage extends JPanel{
 	    private JButton resetLogin = new JButton("Reset");
 	    private JPanel startPanel;
 	    
+	    String supervisorDept="";
+	    
 	    login t;
 	    
 	public LoginPage(login tt) throws IOException
@@ -80,7 +82,7 @@ public class LoginPage extends JPanel{
 	    				GMFr gm = new GMFr();
 	    				t.dispose();}
 	    			else if(checklog==2){
-	    				SupervisorFr sup = new SupervisorFr();
+	    				SupervisorFr sup = new SupervisorFr(supervisorDept);
 	    				t.dispose();}
 	    			else if(checklog==3){
 	    				StaffFr gm = new StaffFr();
@@ -114,7 +116,7 @@ public class LoginPage extends JPanel{
 			
 			else if(checklog==2)
 			{
-				SupervisorFr sup = new SupervisorFr();
+				SupervisorFr sup = new SupervisorFr(supervisorDept);
 				t.dispose();
 			}
 			
@@ -161,6 +163,7 @@ public class LoginPage extends JPanel{
 	
 	public int checkLogin()
 	{
+		int index=0;
 		int checklogs=0;
 		int a1=0,a2=0,s1=0,s2=0,t1=0,t2=0;
 		String un = textUsername.getText();
@@ -189,6 +192,7 @@ public class LoginPage extends JPanel{
 				if(pass.equals(data.supervisors.get(i).getPassword()))
 				{
 					s2=1;
+					index=i;
 					break;
 				}
 			}
@@ -213,6 +217,7 @@ public class LoginPage extends JPanel{
 		}
 		else if(s1==1 && s2==1)
 		{
+			supervisorDept = data.supervisors.get(index).getDepartment();
 			checklogs=2;
 		}
 		else if(t1==1 && t2==1)

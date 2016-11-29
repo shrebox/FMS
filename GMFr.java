@@ -1,5 +1,6 @@
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
+import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
@@ -46,7 +47,7 @@ public class GMFr {
 		gmFrame.setResizable(false);
 		gmFrame.setSize(800, 800);
 		gmFrame.setLayout(null);
-		gmFrame.setLocationRelativeTo(null);
+		//gmFrame.setLocationRelativeTo(null);
 		
 		gmFrame.add(head);
 		head.setBounds(100, 50, 150, 50);
@@ -70,7 +71,9 @@ public class GMFr {
 		gmFrame.add(logoutB);
 		logoutB.setBounds(610, 150, 100, 30);
 		
-		//-------------------home panel-----------------------
+		/**-------------------home panel-----------------------
+		 * 
+		 */
 		
 		homeP.setLayout(null);
 		gmFrame.add(homeP);
@@ -85,12 +88,16 @@ public class GMFr {
 		homeP2.setBounds(100, 240, 600, 500);
 		homeP2.setBackground(Color.CYAN);*/
 		
-		//------------home screen buttons actionlistener-----------------
+		/**------------home screen buttons actionlistener-----------------
+		 * 
+		 */
 		
 		homeAssgnTEvent at = new homeAssgnTEvent();
 		homeAssignTB.addActionListener(at);
 				
-		//------------staff screen buttons actionlistener-----------------
+		/**------------staff screen buttons actionlistener-----------------
+		 * 
+		 */
 		
 		staffsupvdEvent supvd = new staffsupvdEvent();
 		staffsupervisorB.addActionListener(supvd);
@@ -98,17 +105,28 @@ public class GMFr {
 		staffstaffvdEvent staffvd = new staffstaffvdEvent();
 		staffstaffB.addActionListener(staffvd);
 		
-		//-------------logistics screen buttons actionlistener--------------
+		staffvEvent sve = new staffvEvent();
+		staff2viewB.addActionListener(sve);
+		
+		staffdEvent sde = new staffdEvent();
+		staff2deleteB.addActionListener(sde);
+		
+		/**-------------logistics screen buttons actionlistener--------------*/
+		
 		
 		logViewEvent lve = new logViewEvent();
 		logViewB.addActionListener(lve);
 		
-		//-------------reports screen buttons actionlistner-----------------
+		/**-------------reports screen buttons actionlistner-----------------
+		 * 
+		 */
 		
 		reportsViewEvent ve = new reportsViewEvent();
 		reportsViewB.addActionListener(ve);
 		
-		//--------------requests screen buttons actionlistener---------------
+		/**--------------requests screen buttons actionlistener--------------
+		 * -
+		 */
 		
 		reqLeaveEvent le = new reqLeaveEvent();
 		reqLeaveB.addActionListener(le);
@@ -119,7 +137,9 @@ public class GMFr {
 		reqMembersEvent me = new reqMembersEvent();
 		reqMembersB.addActionListener(me);
 		
-		//-----------------tab action listeners-----------------
+		/**-----------------tab action listeners-----------------
+		 * 
+		 */
 		
 		
 		homeEvent he = new homeEvent();
@@ -253,6 +273,46 @@ public class GMFr {
 		}
 	}
 	
+	public class staffvEvent implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e){
+			
+			if(stafCount==1)
+			{
+				//------fill the table with staff data-----------------
+				
+				viewSupStaffTable table = new viewSupStaffTable(1);
+			}
+			
+			else
+			{
+				//-------fill the table with supervisor data-----------
+				
+				viewSupStaffTable table = new viewSupStaffTable(2);
+			}
+		}
+	}
+	
+	public class staffdEvent implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e){
+			
+			if(stafCount==1)
+			{
+				//------fill the table with staff data-----------------
+				
+				delSupStaffTable table = new delSupStaffTable();
+			}
+			
+			else
+			{
+				//-------fill the table with supervisor data-----------
+				
+				delSupStaffTable table = new delSupStaffTable();
+			}
+		}
+	}
+	
 	public class staffstaffvdEvent implements ActionListener{
 		
 		public void actionPerformed(ActionEvent e)
@@ -273,7 +333,7 @@ public class GMFr {
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			viewSupStaffTable lgv = new viewSupStaffTable(3);
 		}
 	}
 	
@@ -300,7 +360,10 @@ public class GMFr {
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			try{
+				Desktop.getDesktop().open(new File("/home/shrebox/reports"));
+			}
+			catch(Exception ex){}
 		}
 	}
 	
@@ -308,7 +371,7 @@ public class GMFr {
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			reqtable rt = new reqtable();
 		}
 	}
 	
@@ -316,7 +379,7 @@ public class GMFr {
 		
 		public void actionPerformed(ActionEvent e)
 		{
-			
+			reqtable rt = new reqtable();
 		}
 	}
 
@@ -324,6 +387,7 @@ public class GMFr {
 	
 	public void actionPerformed(ActionEvent e)
 	{
+		
 		reqtable rt = new reqtable();
 	}
 }

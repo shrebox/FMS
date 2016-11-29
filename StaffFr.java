@@ -26,7 +26,7 @@ public class StaffFr {
 		
 		JButton logSendReqB = new JButton("SEND REQUEST");
 		
-		JButton reportsViewB = new JButton("VIEW REPORTS");
+		JButton reportsViewB = new JButton("GENERATE REPORT");
 		
 		
 		public StaffFr()
@@ -35,7 +35,7 @@ public class StaffFr {
 			staffFrame.setResizable(false);
 			staffFrame.setSize(800, 800);
 			staffFrame.setLayout(null);
-			staffFrame.setLocationRelativeTo(null);
+			//staffFrame.setLocationRelativeTo(null);
 			
 			staffFrame.add(head);
 			head.setBounds(100, 50, 300, 50);

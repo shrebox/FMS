@@ -1,5 +1,3 @@
-package fms;
-
 import java.awt.FlowLayout ;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
