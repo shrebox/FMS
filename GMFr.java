@@ -114,10 +114,10 @@ public class GMFr {
 		reqLeaveB.addActionListener(le);
 		
 		reqLogisticsEvent loe = new reqLogisticsEvent();
-		reqLeaveB.addActionListener(loe);
+		reqLogisticsB.addActionListener(loe);
 		
 		reqMembersEvent me = new reqMembersEvent();
-		reqLeaveB.addActionListener(me);
+		reqMembersB.addActionListener(me);
 		
 		//-----------------tab action listeners-----------------
 		
@@ -324,7 +324,7 @@ public class GMFr {
 	
 	public void actionPerformed(ActionEvent e)
 	{
-		
+		reqtable rt = new reqtable();
 	}
 }
 	
