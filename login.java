@@ -2,18 +2,20 @@ import java.awt.FlowLayout ;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
-import javax.swing.JFrame ;
-import javax.swing.JLabel ; 
+
 import javax.swing.* ;
+import javax.swing.Timer;
+
 import java.util.*;
 
 public class login extends JFrame{
 
 	private JPanel startPanel,loginPanel;
 	private JLabel title,name;
-	private JButton login, googlelogin, register;
+	private JButton login, googlelogin, register,exit;
 	private LoginPage LP;
 	private GM gm;
 	
@@ -55,19 +57,27 @@ public class login extends JFrame{
 		googlelogin.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(googlelogin);
 		
-		startPanel.add(Box.createRigidArea(new Dimension(80, 120)));
+		startPanel.add(Box.createRigidArea(new Dimension(0, 40)));
 		
 		register = new JButton("Register");
+		register.setForeground(Color.BLUE);
 		register.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(register);
 		
-		startPanel.add(Box.createRigidArea(new Dimension(80, 120)));
+		startPanel.add(Box.createRigidArea(new Dimension(0, 100)));
+		
+		exit = new JButton("EXIT");
+		exit.setForeground(Color.RED);
+		exit.setAlignmentX(Component.CENTER_ALIGNMENT);
+		startPanel.add(exit);
+		
+		startPanel.add(Box.createRigidArea(new Dimension(0, 40)));
 
 		name = new JLabel("Shreyash Arya (2015097)\n Tushita Rathore(2015108)");
 		name.setFont(new Font("Sherif",Font.ITALIC,12));
 		name.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(name);
-		
+		startPanel.add(new ClockPane());
 		//startPanel.setBackground(Color.CYAN);
 
 		add(startPanel);
@@ -84,7 +94,8 @@ public class login extends JFrame{
 		regUserEvent RUE = new regUserEvent();  
 		register.addActionListener(RUE);
 		
-		
+		exitEvent ee = new exitEvent();
+		exit.addActionListener(ee);
 		
 		pack();
 		setDefaultLookAndFeelDecorated(true);
@@ -120,6 +131,44 @@ public class login extends JFrame{
 		}
 		
 	}
+	
+	public class exitEvent implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			
+			System.exit(0);
+		}
+	
+	}
+	
+	public class ClockPane extends JPanel {
+
+        private JLabel clock;
+
+        public ClockPane() {
+            setLayout(new BorderLayout());
+            clock = new JLabel();
+            clock.setHorizontalAlignment(JLabel.CENTER);
+            clock.setFont(UIManager.getFont("Label.font").deriveFont(Font.BOLD, 48f));
+            tickTock();
+            add(clock);
+
+            Timer timer = new Timer(500, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    tickTock();
+                }
+            });
+            timer.setRepeats(true);
+            timer.setCoalesce(true);
+            timer.setInitialDelay(0);
+            timer.start();
+        }
+
+        public void tickTock() {
+            clock.setText(DateFormat.getDateTimeInstance().format(new Date()));
+        }
+    }
 	
 }
 

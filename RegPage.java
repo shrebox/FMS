@@ -1,4 +1,3 @@
-
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
 import java.awt.event.ActionEvent ;
@@ -28,7 +27,7 @@ public class RegPage{
 	
 	static JTextField nameTF = new JTextField("",250);
 	static JTextField usernameTF = new JTextField("",250);
-	static JTextField dobTF = new JTextField("",250);
+	static JTextField dobTF = new JTextField("DD/MM/YY",250);
 	static JTextField addressTF = new JTextField("",250);
 	static JComboBox departmentS = new JComboBox(departmentA);
 	//nameTF,usernameTF,dobTF,addressTF,derpartmentTF;
@@ -45,10 +44,13 @@ public class RegPage{
 			list.add(new forRequests());
 		}
 	}
+	
 
 	public RegPage() throws IOException
 	{
+
 		data obj = new data();
+		
 		regFrame.setVisible(true);
 		regFrame.setResizable(false);
 		regFrame.setSize(500, 500);
@@ -143,6 +145,14 @@ public class RegPage{
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				
+				typeF.setSelectedIndex(0);
+				nameTF.setText("");
+				usernameTF.setText("");
+				passwordPF.setText("");
+				dobTF.setText("DD/MM/YY");
+				addressTF.setText("");
+				departmentS.setSelectedIndex(0);
 				regFrame.dispose();
 			}
 			else if(registerchk==9)
@@ -172,7 +182,7 @@ public class RegPage{
 		String pass = String.valueOf(passwordPF.getPassword());
 		String x = String.valueOf(typeF.getSelectedItem());
 		
-		if(name.equals("")  || un.equals("") || pass.equals("") || dep.equals("") || dob.equals("") || adr.equals("") || x.equals("--select type--") )
+		if(name.equals("")  || un.equals("") || pass.equals("") || dep.equals("--select department--") || dob.equals("DD/MM/YY") || dob.equals("") || adr.equals("") || x.equals("--select type--") )
 		{
 			chk = 9 ;
 		}
@@ -283,6 +293,4 @@ public class RegPage{
 			
 
 }
-
-
 

@@ -71,6 +71,22 @@ public class LoginPage extends JPanel{
 	        
 	        add(newPanel);
 	        
+	       fieldPassword.addActionListener(new AbstractAction(){
+	    	   public void actionPerformed(ActionEvent e){
+	    		   
+	    		    int checklog=checkLogin();
+	    			
+	    		    if(checklog==1){
+	    				GMFr gm = new GMFr();
+	    				t.dispose();}
+	    			else if(checklog==2){
+	    				SupervisorFr sup = new SupervisorFr();
+	    				t.dispose();}
+	    			else if(checklog==3){
+	    				StaffFr gm = new StaffFr();
+	    				t.dispose();}
+	    			else{JOptionPane.showMessageDialog(t, "Failed");}}});
+	       
 	       cancelEvent CE = new cancelEvent();  
 		   cancelLogin.addActionListener(CE);
 		   
