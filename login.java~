@@ -1,6 +1,7 @@
 import java.awt.FlowLayout ;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener ;
+import java.io.IOException;
 import java.awt.event.ActionEvent ;
 import java.awt.* ;
 import javax.swing.JFrame ;
@@ -10,22 +11,25 @@ import java.util.*;
 
 public class login extends JFrame{
 
-		//ArrayList<admin> admin = new ArrayList<admin>();
-		//ArrayList<supervisor> supervisors = new ArrayList<supervisor>();
-		//ArrayList<staff> staffs = new ArrayList<staff>();
-
-
 	private JPanel startPanel,loginPanel;
 	private JLabel title,name;
 	private JButton login, googlelogin, register;
 	private LoginPage LP;
+	private GM gm;
+	
 	
 	public void goStart(){
 		setContentPane(startPanel);
 		revalidate();
 	}
+	
+	public void goadminPanel()
+	{
+		setContentPane(gm);
+		revalidate();
+	}
 
-	public login()
+	public login() throws IOException 
 	{
 		
 		
@@ -63,6 +67,8 @@ public class login extends JFrame{
 		name.setFont(new Font("Sherif",Font.ITALIC,12));
 		name.setAlignmentX(Component.CENTER_ALIGNMENT);
 		startPanel.add(name);
+		
+		//startPanel.setBackground(Color.CYAN);
 
 		add(startPanel);
 		
@@ -70,8 +76,7 @@ public class login extends JFrame{
 		LP.setLayout(new BoxLayout(LP, BoxLayout.Y_AXIS));
 		LP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
 		
-		//RP.setLayout(new BoxLayout(RP, BoxLayout.Y_AXIS));
-		//RP.setBorder(new EmptyBorder(new Insets(200, 200, 200, 200)));
+		gm = new GM(this);
 		
 		loginUserEvent LUE = new loginUserEvent();  
 		login.addActionListener(LUE);
@@ -83,10 +88,10 @@ public class login extends JFrame{
 		
 		pack();
 		setDefaultLookAndFeelDecorated(true);
-		//ttt.setSize(300,300);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("FMS System");
+		setLocationRelativeTo(null);
 		
 
 		//loginevent log = new loginevent();
@@ -95,9 +100,8 @@ public class login extends JFrame{
 
 	public class loginUserEvent implements ActionListener{
 
-		@Override
+		
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			setContentPane(LP);
 			revalidate();
 		}
@@ -106,21 +110,12 @@ public class login extends JFrame{
 	
 	public class regUserEvent implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) {
 			RegPage RP = new RegPage();
 		}
 		
 	}
-	/*private class loginevent implements ActionListener{
-		public void actionPerformed(ActionEvent event)
-		{
-
-		}
-	}
-
-
+	
 }
 
 
