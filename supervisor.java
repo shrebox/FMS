@@ -1,4 +1,3 @@
-package fms;
 import java.util.*;
 
 public class supervisor extends User {

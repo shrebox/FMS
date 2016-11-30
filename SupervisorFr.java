@@ -106,6 +106,15 @@ public class SupervisorFr {
 			homeAssgnTEvent at = new homeAssgnTEvent();
 			homeAssignTB.addActionListener(at);
 			
+			homeleaveEvent hle = new homeleaveEvent();
+			homeSendLeaveB.addActionListener(hle);
+			
+			homeselfstatEvent aa =new homeselfstatEvent();
+			homeUpdateSelfStatB.addActionListener(aa);
+			
+			hometaskstatEvent bb = new hometaskstatEvent();
+			homeUpdateTaskStatB.addActionListener(bb);
+			
 			/**----------------staff screen buttons actionlistener----------
 			 * 
 			 */
@@ -285,6 +294,33 @@ public class SupervisorFr {
 
 			}
 		}
+		
+		public class homeleaveEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				sendLeaveForm slf = new sendLeaveForm();
+
+			}
+		}
+		
+public class homeselfstatEvent implements ActionListener{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				updateSelfStatus slf = new updateSelfStatus();
+
+			}
+		}
+
+public class hometaskstatEvent implements ActionListener{
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		updateTaskStatus slf = new updateTaskStatus();
+
+	}
+}
 		
 		public class staffstaffvdEvent implements ActionListener{
 			

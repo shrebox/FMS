@@ -1,4 +1,3 @@
-package fms;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,7 +20,6 @@ public class viewSupStaffTable{
 	data objct;
 	logistics log;
 	
-	
 	public viewSupStaffTable(int count)
 	{
 		mainCount = count;
@@ -32,6 +30,7 @@ public class viewSupStaffTable{
 			e.printStackTrace();
 		}
 		log = new logistics();
+		
 		if(mainCount==1 || mainCount==2)
 		{
 			
@@ -44,15 +43,16 @@ public class viewSupStaffTable{
 			 private static final long serialVersionUID = 1L;
 		        public boolean isCellEditable(int row, int column) {                
 		                return false;};};
-		   if(mainCount==2)
-		   {
-			   viewStaff();
-		   }
-		   else if(mainCount==1)
-		   {
-			   viewSupervisor();
-		   }
 		                
+		                if(mainCount==2)
+		     		   {
+		     			   viewStaff();
+		     		   }
+		     		   else if(mainCount==1)
+		     		   {
+		     			   viewSupervisor();
+		     		   }
+	
 		}
 		
 		else if(mainCount==3)
@@ -65,9 +65,8 @@ public class viewSupStaffTable{
 			table = new JTable(data,columnNames){
 				 private static final long serialVersionUID = 1L;
 			        public boolean isCellEditable(int row, int column) {                
-			                return false;};};
-			                
-			      viewLog();
+			                return false;};};		                
+			        viewLog();
 		}
 		                
 		table.setPreferredScrollableViewportSize(new Dimension(600,100));
