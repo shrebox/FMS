@@ -1,4 +1,6 @@
+package fms;
 import java.util.*;
+
 public class supervisor extends User {
 
 	private String department;
@@ -64,5 +66,7 @@ public class supervisor extends User {
 	{
 		
 	}
+	
+	List<String> storeditems;
 	
 }

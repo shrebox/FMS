@@ -1,3 +1,4 @@
+package fms;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,11 +18,20 @@ public class viewSupStaffTable{
 	int mainCount=-1;
 	
 	Object[][] data;
+	data objct;
+	logistics log;
+	
 	
 	public viewSupStaffTable(int count)
 	{
 		mainCount = count;
-		
+		try {
+			objct = new data();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		log = new logistics();
 		if(mainCount==1 || mainCount==2)
 		{
 			
@@ -34,6 +44,15 @@ public class viewSupStaffTable{
 			 private static final long serialVersionUID = 1L;
 		        public boolean isCellEditable(int row, int column) {                
 		                return false;};};
+		   if(mainCount==2)
+		   {
+			   viewStaff();
+		   }
+		   else if(mainCount==1)
+		   {
+			   viewSupervisor();
+		   }
+		                
 		}
 		
 		else if(mainCount==3)
@@ -47,6 +66,8 @@ public class viewSupStaffTable{
 				 private static final long serialVersionUID = 1L;
 			        public boolean isCellEditable(int row, int column) {                
 			                return false;};};
+			                
+			      viewLog();
 		}
 		                
 		table.setPreferredScrollableViewportSize(new Dimension(600,100));
@@ -78,9 +99,51 @@ public class viewSupStaffTable{
 		}
 	}
 	
-	/*public static void main(String args[])
+	public void viewStaff()
 	{
-		viewSupStaffTable n = new viewSupStaffTable();
-	}*/
+		for(int i=0;i<objct.numSuperv();i++)
+		{
+			data[i][0] = objct.supervisors.get(i).getId();
+			data[i][1] = objct.supervisors.get(i).getName();
+			data[i][2] = objct.supervisors.get(i).getUsername();
+			data[i][3] = objct.supervisors.get(i).getDepartment();
+			
+		}
+	}
+	
+	public void viewSupervisor()
+	{
+		for(int i=0;i<objct.numStaff();i++)
+		{
+			data[i][0] = objct.staffs.get(i).getId();
+			data[i][1] = objct.staffs.get(i).getName();
+			data[i][2] = objct.staffs.get(i).getUsername();
+			data[i][3] = objct.staffs.get(i).getDepartment();
+			
+		}
+	}
+	
+	public void viewLog()
+	{
+		for(int i=0;i<objct.numSuperv();i++)
+		{
+			System.out.println(i);
+			data[i][0] = objct.supervisors.get(i).getId();
+			data[i][1] =  objct.supervisors.get(i).getName();
+			data[i][2] =  objct.supervisors.get(i).getUsername();
+			data[i][3] =  objct.supervisors.get(i).getDepartment();
+			data[i][4] = log.num[i];
+			
+			if(i==0)
+			{
+				for(int j=0;j<log.num[i];j++)
+				{
+					data[j+i][5] =objct.supervisors.get(log.num[j]).storeditems.get(j);
+				}
+			}
+			
+		}
+		
+	}
 
 }
