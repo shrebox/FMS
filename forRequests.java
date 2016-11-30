@@ -1,3 +1,6 @@
+/** author @ Shreyash Arya (2015097)h
+	    Tushita Rathore (2015108)
+*/
 public class forRequests {
 	
 	private String name;
