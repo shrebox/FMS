@@ -1,5 +1,12 @@
 # FMS
-<html> <head> "hello" </head> </html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>
 Project Description - Objective and features supported by the application:
 
 Objective: To make a proper defined system using JAVA and Database for managing various things that the FMS is required to do. Using the Project, it would be easy to keep track of tasks assigned to various members and their availability status, to add new members or delete members from the system 
