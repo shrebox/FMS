@@ -3,7 +3,7 @@
 <body>
 
 <p>Hello people!</p>
-
+<img src="https://static1.squarespace.com/static/52d66949e4b0a8cec3bcdd46/t/588f67a0e3df287fa74580b9/1485793188216/Screen+Shot+2017-01-30+at+16.18.10.png?format=1500w">
 </body>
 </html>
 Project Description - Objective and features supported by the application:
