@@ -7,7 +7,7 @@
 <img src="https://static1.squarespace.com/static/52d66949e4b0a8cec3bcdd46/t/588f67a0e3df287fa74580b9/1485793188216/Screen+Shot+2017-01-30+at+16.18.10.png?format=1500w">
 </body>
 </html>
-Project Description - Objective and features supported by the application:
+## Project Description - Objective and features supported by the application:
 
 Objective: To make a proper defined system using JAVA and Database for managing various things that the FMS is required to do. Using the Project, it would be easy to keep track of tasks assigned to various members and their availability status, to add new members or delete members from the system 
 
